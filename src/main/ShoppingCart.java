@@ -19,7 +19,10 @@ public class ShoppingCart {
 	private double discount;
 	private double deliveryCost;
 	private double totalAmount;
+	private double couponDiscount;
+	private double campaignDiscount;
 	
+
 	public ShoppingCart()
 	{
 		this.productList = new LinkedList<Product>();
@@ -73,16 +76,16 @@ public class ShoppingCart {
 		this.setSubtotal(this.getSubtotal() - this.getDiscount());
 	}
 
-	public void getTotalAmountAfterDiscounts() {
-		
+	public double getTotalAmountAfterDiscounts() {
+		return this.getTotalPayment();
 	}
 	
-	public void getCouponDiscount() {
-		
+	public double getCouponDiscount() {
+		return this.couponDiscount;
 	}
 	
-	public void getCampaignDiscount() {
-		
+	public double getCampaignDiscount() {
+		return this.campaignDiscount;
 	}
 	
 	public void print() 
@@ -100,12 +103,14 @@ public class ShoppingCart {
 		}
 		System.out.println("___________________");
 		System.out.println("Subtotal:	"+ this.getSubtotal());
+		System.out.println("Campaign Discount: "+ this.getCampaignDiscount());
+		System.out.println("Coupon Discount: "+ this.getCouponDiscount());
 		System.out.println("Total Discount: "+ this.getDiscount());
 		System.out.println("Delivery Cost:	"+ this.getDeliveryCost());
 		System.out.println("Total Amount:	"+ this.getTotalPayment());
 	}
 	
-	public void sortProducts()
+	private void sortProducts()
 	{
 		ShoppingCart tempCart = new ShoppingCart();
 		for(Category c : this.getCategoryList())
@@ -120,7 +125,7 @@ public class ShoppingCart {
 		this.setProductList(tempCart.getProductList());
 	}
 	
-	public void finalCalculations()
+	private void finalCalculations()
 	{
 		DeliveryCostCalculator delivery = new DeliveryCostCalculator(5, 0, 2.99);
 		delivery.calculateFor(this);
@@ -173,6 +178,22 @@ public class ShoppingCart {
 
 	public void setDiscount(double discount) {
 		this.discount = discount;
+	}
+	
+	public double getTotalAmount() {
+		return totalAmount;
+	}
+
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
+	}
+
+	public void setCouponDiscount(double couponDiscount) {
+		this.couponDiscount = couponDiscount;
+	}
+
+	public void setCampaignDiscount(double campaignDiscount) {
+		this.campaignDiscount = campaignDiscount;
 	}
 
 }

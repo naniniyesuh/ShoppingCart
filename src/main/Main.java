@@ -9,9 +9,8 @@ import product.Product;
 
 public class Main {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	public static void main(String[] args) 
+	{
 		Category food = new Category("Food");
 		Category monitors = new Category("Monitors", "Electronics");
 		Category shampooCategory = new Category("Shampoo");

@@ -37,6 +37,7 @@ public class Campaign extends Discount{
 	@Override
 	public void applyDiscount(ShoppingCart shoppingCart, Campaign campaign) 
 	{
+		shoppingCart.setCampaignDiscount(campaign.getTotalDiscount());
 		shoppingCart.setDiscount(shoppingCart.getDiscount() + campaign.getTotalDiscount());
 	}
 

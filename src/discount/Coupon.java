@@ -21,6 +21,7 @@ public class Coupon {
 	{
 		if(shoppingCart.getSubtotal() > c.getMinAmount())
 		{
+			shoppingCart.setCouponDiscount(c.getDiscountRate());
 			shoppingCart.setDiscount(shoppingCart.getDiscount() + c.getDiscountRate());
 		}
 	}
